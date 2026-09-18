@@ -30,7 +30,10 @@ def main() -> None:
         },
     )
     with urlopen(request, timeout=30) as response:
-        tree = json.load(response)["tree"]
+        payload = json.load(response)
+    if payload.get("truncated") is True:
+        raise RuntimeError("GitHub returned a truncated repository tree")
+    tree = payload["tree"]
 
     docs: dict[str, str] = {}
     for entry in tree:

@@ -13,6 +13,7 @@ I'm interested in privacy-preserving and local-first systems, evidence-heavy res
 **[happy people agent skills](https://github.com/cortezbuilds/happy-people-agent-skills)** is a small collection of source-available skills for agents:
 
 <!-- BEGIN HAPPY PEOPLE SKILLS -->
+- [Intent Stewardship](https://github.com/cortezbuilds/happy-people-agent-skills/blob/main/skills/intent-stewardship/SKILL.md)
 - [OSS Contribution Scout](https://github.com/cortezbuilds/happy-people-agent-skills/blob/main/skills/oss-contribution-scout/SKILL.md)
 - [Privacy Exposure Scout](https://github.com/cortezbuilds/happy-people-agent-skills/blob/main/skills/privacy-exposure-scout/SKILL.md)
 <!-- END HAPPY PEOPLE SKILLS -->
