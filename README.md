@@ -12,8 +12,10 @@ I'm interested in privacy-preserving and local-first systems, evidence-heavy res
 
 **[happy people agent skills](https://github.com/cortezbuilds/happy-people-agent-skills)** is a small collection of source-available skills for agents:
 
-- **[OSS Contribution Scout](https://github.com/cortezbuilds/happy-people-agent-skills/tree/main/skills/oss-contribution-scout)** helps turn a useful discovery into a focused upstream contribution, with a reproducer and a reason it matters to other users.
-- **[Privacy Exposure Scout](https://github.com/cortezbuilds/happy-people-agent-skills/tree/main/skills/privacy-exposure-scout)** helps catch unintended exposure during ordinary work and respond without spreading the sensitive information further.
+<!-- BEGIN HAPPY PEOPLE SKILLS -->
+- [OSS Contribution Scout](https://github.com/cortezbuilds/happy-people-agent-skills/blob/main/skills/oss-contribution-scout/SKILL.md)
+- [Privacy Exposure Scout](https://github.com/cortezbuilds/happy-people-agent-skills/blob/main/skills/privacy-exposure-scout/SKILL.md)
+<!-- END HAPPY PEOPLE SKILLS -->
 
 [Installation and license](https://github.com/cortezbuilds/happy-people-agent-skills#install-locally)
 
