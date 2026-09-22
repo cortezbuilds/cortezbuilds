@@ -10,7 +10,9 @@ I'm interested in privacy-preserving and local-first systems, evidence-heavy res
 
 ## Encrypted contact
 
-For encrypted email to `cortezbuilds@proton.me`, [download my OpenPGP public key](keys/cortezbuilds-openpgp.asc). Its encryption subkey uses hybrid ML-KEM/X25519, so the sender's OpenPGP software must support that format.
+For encrypted email to `cortezbuilds@proton.me`, [download my email public key](keys/cortezbuilds-email.asc). It contains the Curve25519 encryption subkey used by Proton Mail.
+
+For software that supports hybrid ML-KEM/X25519, [the full public certificate](keys/cortezbuilds-openpgp.asc) also includes my hybrid encryption subkey. Messages encrypted to that subkey are decrypted with my local GnuPG setup.
 
 Fingerprint: `96D2 1E92 9922 899D 6C86 AA37 FAF3 EE10 99BB 76CF`. Confirm the fingerprint through another trusted channel before sending sensitive information.
 
