@@ -8,6 +8,12 @@ My professional work has included data platforms, a customer-facing RAG assistan
 
 I'm interested in privacy-preserving and local-first systems, evidence-heavy research, electronic music, and DJ tooling. The music projects are one place those interests meet: discovery, data, ownership, and the pleasure of finding something worth playing.
 
+## Encrypted contact
+
+For encrypted email to `cortezbuilds@proton.me`, [download my OpenPGP public key](keys/cortezbuilds-openpgp.asc). Its encryption subkey uses hybrid ML-KEM/X25519, so the sender's OpenPGP software must support that format.
+
+Fingerprint: `96D2 1E92 9922 899D 6C86 AA37 FAF3 EE10 99BB 76CF`. Confirm the fingerprint through another trusted channel before sending sensitive information.
+
 ## Things to try
 
 **[happy people agent skills](https://github.com/cortezbuilds/happy-people-agent-skills)** is a small collection of source-available skills for agents:
