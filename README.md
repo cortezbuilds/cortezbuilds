@@ -4,6 +4,10 @@ I'm a developer in Berlin. I work across data systems, automation, and applied A
 
 I came to software through psychology, neuroscience, and medical research rather than a traditional computer-science path. That background still shapes how I think: systems are built for people, measurements have context, and elegant machinery is useless when it answers the wrong question.
 
+## Public identity
+
+[Cortez Builds identity record](identity/README.md) lists my current contact key and the status of future credentials. This GitHub page is a provisional discovery location for a signed record that can later be served from more than one place.
+
 My professional work has included data platforms, a customer-facing RAG assistant for industrial energy users, engineering leadership, and running a small automation business. Python, SQL, and Linux are familiar territory. I enjoy following a problem across the boundaries between the software, the people using it, and the decisions it is supposed to help them make.
 
 I'm interested in privacy-preserving and local-first systems, evidence-heavy research, electronic music, and DJ tooling. The music projects are one place those interests meet: discovery, data, ownership, and the pleasure of finding something worth playing.
