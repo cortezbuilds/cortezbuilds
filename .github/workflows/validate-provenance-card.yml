@@ -21,4 +21,5 @@ jobs:
           python3 mobile_card.py verify
           python3 -m unittest discover -s tests -v
           python3 -m unittest discover -s validation -p test_trace_build.py -v
+          python3 -m unittest discover -s validation -p test_check_receipts.py -v
           python3 validation/check_receipts.py
