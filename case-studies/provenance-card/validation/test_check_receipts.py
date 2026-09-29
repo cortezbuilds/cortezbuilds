@@ -134,6 +134,16 @@ class CheckReceiptsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "invalid monotonic timing"):
             self.check()
 
+    def test_overstated_capture_boundary_is_rejected(self) -> None:
+        self.mutate(lambda receipt: receipt.update(capture_boundary="complete_host_and_model_capture"))
+        with self.assertRaisesRegex(ValueError, "unexpected trace capture boundary/scope"):
+            self.check()
+
+    def test_overstated_scope_is_rejected(self) -> None:
+        self.mutate(lambda receipt: receipt.update(scope="Every model and host action was captured."))
+        with self.assertRaisesRegex(ValueError, "unexpected trace capture boundary/scope"):
+            self.check()
+
 
 if __name__ == "__main__":
     unittest.main()

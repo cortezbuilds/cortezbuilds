@@ -18,6 +18,12 @@ NAMES = ("desktop-build", "mobile-build", "desktop-verify", "mobile-verify", "te
 BUILD_STEPS = {"desktop-build", "mobile-build", "png-render"}
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 UTC_TIMESTAMP = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|\+00:00)$")
+CAPTURE_BOUNDARY = "controlled_subprocess_stdio_and_declared_files"
+CAPTURE_SCOPE = (
+    "Linux same-process-group metadata only: declared-file hashes and captured stdio digests. "
+    "New-session/group descendants, model context, host activity, and all-process I/O "
+    "are outside this capture."
+)
 
 
 def check_digest(item: object, label: str, keys: set[str]) -> None:
@@ -79,6 +85,9 @@ def check(name: str) -> None:
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     if receipt["schema_version"] != "build-trace/1" or receipt["root"] != "." or receipt["cwd"] != ".":
         raise ValueError(f"unexpected trace schema/root: {name}")
+    if (receipt["capture_boundary"] != CAPTURE_BOUNDARY or
+            receipt["scope"] != CAPTURE_SCOPE):
+        raise ValueError(f"unexpected trace capture boundary/scope: {name}")
     if receipt["spec"] != {"path": f"validation/{name}.spec.json", **sha256_file(spec_path)}:
         raise ValueError(f"trace spec changed: {name}")
     if receipt["command"] != spec["command"] or receipt["timeout_seconds"] != spec["timeout_seconds"]:
