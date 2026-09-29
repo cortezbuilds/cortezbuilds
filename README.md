@@ -28,6 +28,7 @@ Fingerprint: `96D2 1E92 9922 899D 6C86 AA37 FAF3 EE10 99BB 76CF`. Confirm the fi
 - [Intent Stewardship](https://github.com/cortezbuilds/happy-people-agent-skills/blob/main/skills/intent-stewardship/SKILL.md)
 - [OSS Contribution Scout](https://github.com/cortezbuilds/happy-people-agent-skills/blob/main/skills/oss-contribution-scout/SKILL.md)
 - [Privacy Exposure Scout](https://github.com/cortezbuilds/happy-people-agent-skills/blob/main/skills/privacy-exposure-scout/SKILL.md)
+- [Release Evidence](https://github.com/cortezbuilds/happy-people-agent-skills/blob/main/skills/release-evidence/SKILL.md)
 <!-- END HAPPY PEOPLE SKILLS -->
 
 [Installation and license](https://github.com/cortezbuilds/happy-people-agent-skills#install-locally)
