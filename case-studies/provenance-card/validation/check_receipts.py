@@ -9,7 +9,7 @@ import json
 import re
 import sys
 
-from trace_build import sha256_file
+from trace_build import read_spec, sha256_file
 
 
 CARD = Path(__file__).resolve().parents[1]
@@ -79,16 +79,15 @@ def check_snapshot(items: list[dict], paths: list[str], label: str, *,
 
 
 def check(name: str) -> None:
-    spec_path = HERE / f"{name}.spec.json"
     receipt_path = HERE / "receipts" / f"{name}.json"
-    spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    spec, spec_identity = read_spec(CARD, f"validation/{name}.spec.json")
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     if receipt["schema_version"] != "build-trace/1" or receipt["root"] != "." or receipt["cwd"] != ".":
         raise ValueError(f"unexpected trace schema/root: {name}")
     if (receipt["capture_boundary"] != CAPTURE_BOUNDARY or
             receipt["scope"] != CAPTURE_SCOPE):
         raise ValueError(f"unexpected trace capture boundary/scope: {name}")
-    if receipt["spec"] != {"path": f"validation/{name}.spec.json", **sha256_file(spec_path)}:
+    if receipt["spec"] != spec_identity:
         raise ValueError(f"trace spec changed: {name}")
     if receipt["command"] != spec["command"] or receipt["timeout_seconds"] != spec["timeout_seconds"]:
         raise ValueError(f"trace command changed: {name}")

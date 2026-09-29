@@ -45,8 +45,31 @@ class CheckReceiptsTests(unittest.TestCase):
         change(receipt)
         self.receipt_path.write_text(json.dumps(receipt), encoding="utf-8")
 
+    def mutate_spec_and_rehash(self, change) -> None:
+        spec_path = self.validation / f"{NAME}.spec.json"
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        change(spec)
+        spec_path.write_text(json.dumps(spec), encoding="utf-8")
+
+        def update_receipt(receipt: dict) -> None:
+            receipt["spec"] = {"path": f"validation/{NAME}.spec.json",
+                               **check_receipts.sha256_file(spec_path)}
+            receipt["command"] = spec["command"]
+
+        self.mutate(update_receipt)
+
     def test_saved_receipt_matches_reviewed_files(self) -> None:
         self.check()
+
+    def test_rehashed_spec_with_invalid_schema_is_rejected(self) -> None:
+        self.mutate_spec_and_rehash(lambda spec: spec.update(schema_version="build-trace-spec/999"))
+        with self.assertRaisesRegex(ValueError, "invalid build trace spec schema"):
+            self.check()
+
+    def test_rehashed_spec_with_empty_command_is_rejected(self) -> None:
+        self.mutate_spec_and_rehash(lambda spec: spec.update(command=[]))
+        with self.assertRaisesRegex(ValueError, "command must be a nonempty list"):
+            self.check()
 
     def test_changed_input_after_snapshot_fails(self) -> None:
         self.mutate(lambda receipt: receipt["inputs_after"][0].update(sha256="0" * 64))
