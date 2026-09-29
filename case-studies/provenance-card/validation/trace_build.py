@@ -61,27 +61,27 @@ def resolve_executable(root: Path, program: str) -> tuple[Path, str] | None:
         # Popen runs with cwd=root. execvp interprets relative PATH entries
         # from that directory, while shutil.which would use the tracer's cwd.
         path_entries = os.get_exec_path()
-        search_path = os.pathsep.join(
+        search_entries = [
             entry if os.path.isabs(entry) else str(root / entry)
             for entry in path_entries
-        )
+        ]
+        search_path = os.pathsep.join(search_entries)
         located = shutil.which(program, path=search_path)
         if located is None:
             return None
         candidate = Path(located)
-        selected = Path(os.path.abspath(candidate))
         invocation = None
-        for entry in path_entries:
-            path = f"{entry}/{program}" if entry else program
-            test_path = Path(path) if os.path.isabs(path) else root / path
-            if Path(os.path.abspath(test_path)) == selected:
-                invocation = path
+        for entry, search_entry in zip(path_entries, search_entries):
+            # Match the selected spelling, not its lexical abspath: resolving
+            # link/../builder first can name a different file than exec uses.
+            if os.path.join(search_entry, program) == located:
+                invocation = os.path.join(entry, program)
                 break
         if invocation is None:
             return None
-    # Hash the selected pathname, including a symlink's target, while preserving
-    # the exec pathname spelling: shebang interpreters expose it as sys.argv[0].
-    candidate = Path(os.path.abspath(candidate))
+    # Keep the selected pathname unresolved. Opening it before and after the
+    # command follows the same symlinks as exec and detects a retargeted link.
+    # Preserve invocation spelling: shebang interpreters expose it as argv[0].
     if not candidate.is_file() or not os.access(candidate, os.X_OK):
         return None
     return candidate, invocation
@@ -113,14 +113,24 @@ def file_state(root: Path, name: str) -> dict[str, Any]:
 def read_spec(root: Path, spec_name: str) -> tuple[dict[str, Any], dict[str, Any]]:
     spec_path = repo_path(root, spec_name, must_exist=True)
     raw = spec_path.read_bytes()
-    spec = json.loads(raw)
+
+    def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"duplicate build trace spec key: {key!r}")
+            result[key] = value
+        return result
+
+    spec = json.loads(raw, object_pairs_hook=unique_object)
     if not isinstance(spec, dict) or set(spec) != {
         "schema_version", "command", "inputs", "outputs", "timeout_seconds"
     } or spec["schema_version"] != SPEC_SCHEMA:
         raise ValueError("invalid build trace spec schema")
     command = spec["command"]
     if (not isinstance(command, list) or not command or
-            any(not isinstance(arg, str) or not arg or "\x00" in arg for arg in command)):
+            not isinstance(command[0], str) or not command[0] or
+            any(not isinstance(arg, str) or "\x00" in arg for arg in command)):
         raise ValueError("command must be a nonempty list of argument strings")
     for key in ("inputs", "outputs"):
         paths = spec[key]

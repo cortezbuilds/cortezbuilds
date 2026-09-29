@@ -286,6 +286,36 @@ class BuildTraceTests(unittest.TestCase):
         self.assertTrue(result["success"])
         self.assertEqual((self.root / "output.txt").read_text(), "selected-name")
 
+    def test_executable_symlink_retarget_is_detected(self) -> None:
+        (self.root / "input.txt").write_text("synthetic", encoding="utf-8")
+        first = self.root / "first-builder"
+        second = self.root / "second-builder"
+        first.write_text(
+            f"#!{sys.executable}\n"
+            "from pathlib import Path\n"
+            "Path('output.txt').write_text('first ran')\n"
+            "Path('selected-builder').unlink()\n"
+            "Path('selected-builder').symlink_to('second-builder')\n",
+            encoding="utf-8",
+        )
+        second.write_text(f"#!{sys.executable}\nprint('second')\n", encoding="utf-8")
+        first.chmod(0o755)
+        second.chmod(0o755)
+        (self.root / "selected-builder").symlink_to("first-builder")
+        self.write_spec(["./selected-builder"],
+                        inputs=["first-builder", "second-builder", "input.txt"])
+
+        result = self.run_trace()
+
+        self.assertEqual(result["exit_code"], 0)
+        self.assertEqual((self.root / "output.txt").read_text(encoding="utf-8"), "first ran")
+        self.assertFalse(result["executable_stable"])
+        self.assertFalse(result["capture_complete"])
+        self.assertFalse(result["success"])
+        self.assertEqual(result["error"], "executable_changed")
+        self.assertEqual(result["executable"], trace_build.sha256_file(first))
+        self.assertEqual(result["executable_after"], trace_build.sha256_file(second))
+
     def test_relative_shebang_argv_zero_matches_direct_execution(self) -> None:
         (self.root / "input.txt").write_text("synthetic", encoding="utf-8")
         program = self.root / "builder"
@@ -369,6 +399,99 @@ class BuildTraceTests(unittest.TestCase):
         self.assertTrue(result["success"])
         self.assertEqual((self.root / "output.txt").read_text(encoding="utf-8"), "build root")
         self.assertEqual(result["executable"], trace_build.sha256_file(root_program))
+
+    def symlink_parent_programs(self) -> tuple[Path, Path]:
+        (self.root / "input.txt").write_text("synthetic", encoding="utf-8")
+        nested = self.root / "actual" / "nested"
+        nested.mkdir(parents=True)
+        (self.root / "link").symlink_to(nested, target_is_directory=True)
+        selected = self.root / "actual" / "builder"
+        shadow = self.root / "builder"
+        for program, label in ((selected, "selected"), (shadow, "lexical shadow")):
+            program.write_text(
+                f"#!{sys.executable}\n"
+                "from pathlib import Path\n"
+                "import sys\n"
+                f"Path('output.txt').write_text({label!r} + ':' + sys.argv[0])\n"
+                "print(sys.argv[0])\n",
+                encoding="utf-8",
+            )
+            program.chmod(0o755)
+        return selected, shadow
+
+    def test_direct_symlink_parent_dotdot_hashes_executed_file(self) -> None:
+        selected, shadow = self.symlink_parent_programs()
+        self.write_spec(["./link/../builder"],
+                        inputs=["actual/builder", "builder", "input.txt"])
+        direct = subprocess.run(["./link/../builder"], cwd=self.root,
+                                capture_output=True, text=True)
+        self.assertEqual(direct.returncode, 0, direct.stderr)
+        expected = (self.root / "output.txt").read_text(encoding="utf-8")
+        self.assertEqual(expected, "selected:./link/../builder")
+        (self.root / "output.txt").unlink()
+
+        result = self.run_trace()
+
+        self.assertTrue(result["success"])
+        self.assertEqual((self.root / "output.txt").read_text(encoding="utf-8"), expected)
+        self.assertEqual(result["stdout"]["sha256"],
+                         hashlib.sha256(direct.stdout.encode()).hexdigest())
+        self.assertEqual(result["executable"], trace_build.sha256_file(selected))
+        self.assertNotEqual(result["executable"], trace_build.sha256_file(shadow))
+
+    def test_relative_path_symlink_parent_dotdot_hashes_executed_file(self) -> None:
+        selected, shadow = self.symlink_parent_programs()
+        self.write_spec(["builder"], inputs=["actual/builder", "builder", "input.txt"])
+        with mock.patch.dict(os.environ, {"PATH": "link/.."}):
+            direct = subprocess.run(["builder"], cwd=self.root,
+                                    capture_output=True, text=True)
+            self.assertEqual(direct.returncode, 0, direct.stderr)
+            expected = (self.root / "output.txt").read_text(encoding="utf-8")
+            (self.root / "output.txt").unlink()
+            result = self.run_trace()
+
+        self.assertEqual(expected, "selected:link/../builder")
+        self.assertTrue(result["success"])
+        self.assertEqual((self.root / "output.txt").read_text(encoding="utf-8"), expected)
+        self.assertEqual(result["stdout"]["sha256"],
+                         hashlib.sha256(direct.stdout.encode()).hexdigest())
+        self.assertEqual(result["executable"], trace_build.sha256_file(selected))
+        self.assertNotEqual(result["executable"], trace_build.sha256_file(shadow))
+
+    def test_empty_argument_after_program_is_allowed(self) -> None:
+        (self.root / "builder.py").write_text(
+            "from pathlib import Path\n"
+            "import sys\n"
+            "Path('output.txt').write_text(repr(sys.argv[1]))\n",
+            encoding="utf-8",
+        )
+        (self.root / "input.txt").write_text("synthetic", encoding="utf-8")
+        self.write_spec(["python3", "builder.py", ""])
+
+        result = self.run_trace()
+
+        self.assertTrue(result["success"])
+        self.assertEqual((self.root / "output.txt").read_text(encoding="utf-8"), "''")
+        self.assertEqual(result["command"], ["python3", "builder.py", ""])
+
+    def test_duplicate_spec_key_is_rejected_before_reservation(self) -> None:
+        (self.root / "builder.py").write_text(
+            "from pathlib import Path\nPath('output.txt').write_text('ran')\n",
+            encoding="utf-8",
+        )
+        (self.root / "input.txt").write_text("synthetic", encoding="utf-8")
+        self.write_spec(["python3", "builder.py"])
+        spec_path = self.root / "trace-spec.json"
+        original = spec_path.read_text(encoding="utf-8")
+        spec_path.write_text(original[:-1] + ',"timeout_seconds":5}', encoding="utf-8")
+
+        with mock.patch.object(trace_build, "ReceiptReservation",
+                               side_effect=AssertionError("reserved receipt")):
+            with self.assertRaisesRegex(ValueError, "duplicate build trace spec key"):
+                self.run_trace()
+
+        self.assertFalse(self.receipt.exists())
+        self.assertFalse((self.root / "output.txt").exists())
 
     def test_paths_cannot_escape_root(self) -> None:
         (self.root / "builder.py").write_text("pass\n", encoding="utf-8")
