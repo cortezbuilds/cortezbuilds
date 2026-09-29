@@ -1,0 +1,7 @@
+{
+  "schema_version": "build-trace-spec/1",
+  "command": ["python3", "provenance_card.py", "build"],
+  "inputs": ["manifest.json", "provenance_card.py"],
+  "outputs": ["card.svg", "receipt.json"],
+  "timeout_seconds": 30
+}

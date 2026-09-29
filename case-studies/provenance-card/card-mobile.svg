@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="1630" viewBox="0 0 360 1630" role="img" aria-labelledby="mobile-title mobile-desc">
+<title id="mobile-title">A reversible mistake — mobile provenance card</title>
+<desc id="mobile-desc">A phone-width view of the provenance record. The README addition and revert link to commit-pinned GitHub records. The private decision to draft for review, proposal, and unverified deployment states are labeled separately. The full manifest SHA-256 appears below.</desc>
+<defs>
+<linearGradient id="mobile-back" x2="1" y2="1"><stop stop-color="#07111E"/><stop offset="1" stop-color="#11283A"/></linearGradient>
+<radialGradient id="mobile-glow"><stop stop-color="#1B5E79" stop-opacity=".42"/><stop offset="1" stop-color="#1B5E79" stop-opacity="0"/></radialGradient>
+<linearGradient id="mobile-accent" x2="1" y2="0"><stop stop-color="#5FE2C0"/><stop offset="1" stop-color="#68A8FF"/></linearGradient>
+</defs>
+<rect width="360" height="1630" fill="url(#mobile-back)"/>
+<circle cx="340" cy="120" r="230" fill="url(#mobile-glow)"/>
+<rect x="20" y="25" width="6" height="23" rx="3" fill="url(#mobile-accent)"/>
+<text x="38" y="42" fill="#9FC6D6" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2">PROVENANCE STUDY / 001</text>
+<text x="20" y="91" fill="#F2F8FB" font-family="DejaVu Sans, Arial, sans-serif" font-size="33" font-weight="700">A reversible</text>
+<text x="20" y="129" fill="#F2F8FB" font-family="DejaVu Sans, Arial, sans-serif" font-size="33" font-weight="700">mistake</text>
+<text x="21" y="163" fill="#B6CBD5" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">A public README edit, its restoration,</text>
+<text x="21" y="185" fill="#B6CBD5" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">and a beliefs draft prepared</text>
+<text x="21" y="207" fill="#B6CBD5" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">for review.</text>
+<path d="M0 232H360" stroke="#244155"/>
+<rect x="16" y="252" width="328" height="355" rx="19" fill="#112335" stroke="#2A4558"/>
+<text x="34" y="284" fill="#9FC6D6" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2">THE TRACE</text>
+<path d="M47 329V531" stroke="#35536A" stroke-width="3" stroke-linecap="round"/>
+<a href="https://github.com/cortezbuilds/cortezbuilds/blob/654c51648f43bfa861c1f9bdc1fa3dbee2ec4c4d/README.md?plain=1#L7-L14">
+<rect x="30" y="303" width="300" height="88" rx="13" fill="#182E42" stroke="#325169"/>
+<circle cx="47" cy="328" r="7" fill="#68A8FF"/>
+<text x="65" y="333" fill="#F2F8FB" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700">README edit landed on main</text>
+<text x="65" y="356" fill="#AAC4D0" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">654c516 · README lines 7–14</text>
+<text x="65" y="378" fill="#68A8FF" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing=".5">SOURCE</text>
+</a>
+<a href="https://github.com/cortezbuilds/cortezbuilds/commit/1f0c3e17d3e99a47241ebc00abdbe4e8071c7a5b">
+<rect x="30" y="400" width="300" height="88" rx="13" fill="#182E42" stroke="#325169"/>
+<circle cx="47" cy="425" r="7" fill="#4DD4A4"/>
+<text x="65" y="430" fill="#F2F8FB" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700">Restored on main</text>
+<text x="65" y="453" fill="#AAC4D0" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">1f0c3e17 · observed at snapshot</text>
+<text x="65" y="475" fill="#4DD4A4" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing=".5">OBSERVED</text>
+</a>
+<rect x="30" y="497" width="300" height="88" rx="13" fill="#182E42" stroke="#325169"/>
+<circle cx="47" cy="522" r="7" fill="#C29BFF"/>
+<text x="65" y="527" fill="#F2F8FB" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700">Draft prepared for review</text>
+<text x="65" y="550" fill="#AAC4D0" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">Beliefs wording · decision private</text>
+<text x="65" y="572" fill="#C29BFF" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing=".5">DECISION</text>
+<rect x="16" y="625" width="328" height="284" rx="19" fill="#112335" stroke="#2A4558"/>
+<circle cx="214" cy="696" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="278" cy="682" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="321" cy="677" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="196" cy="735" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="157" cy="700" r="3" fill="#91CEDD" opacity=".18"/>
+<circle cx="70" cy="728" r="2" fill="#91CEDD" opacity=".18"/>
+<circle cx="263" cy="678" r="2" fill="#91CEDD" opacity=".18"/>
+<circle cx="148" cy="694" r="3" fill="#91CEDD" opacity=".18"/>
+<circle cx="186" cy="674" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="302" cy="672" r="2" fill="#91CEDD" opacity=".18"/>
+<circle cx="144" cy="703" r="2" fill="#91CEDD" opacity=".18"/>
+<circle cx="243" cy="722" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="209" cy="702" r="2" fill="#91CEDD" opacity=".18"/>
+<circle cx="175" cy="673" r="3" fill="#91CEDD" opacity=".18"/>
+<circle cx="127" cy="683" r="2" fill="#91CEDD" opacity=".18"/>
+<circle cx="202" cy="702" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="213" cy="673" r="2" fill="#91CEDD" opacity=".18"/>
+<circle cx="121" cy="686" r="2" fill="#91CEDD" opacity=".18"/>
+<circle cx="79" cy="714" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="320" cy="727" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="264" cy="713" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="97" cy="717" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="130" cy="682" r="3" fill="#91CEDD" opacity=".18"/>
+<circle cx="183" cy="707" r="1" fill="#91CEDD" opacity=".18"/>
+<circle cx="155" cy="696" r="2" fill="#91CEDD" opacity=".18"/>
+<circle cx="109" cy="712" r="3" fill="#91CEDD" opacity=".18"/>
+<text x="34" y="657" fill="#9FC6D6" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.1">EXACT RECORD ID</text>
+<path d="M63 707H224" fill="none" stroke="#36556C" stroke-width="13" stroke-linecap="round" opacity=".30"/>
+<path d="M63 707H224" fill="none" stroke="url(#mobile-accent)" stroke-width="3" stroke-linecap="round"/>
+<path d="M224 707C256 707 263 684 291 684" fill="none" stroke="#F0BC6B" stroke-width="2.5" stroke-dasharray="5 6"/>
+<path d="M224 707C256 707 263 734 291 734" fill="none" stroke="#A8B4C5" stroke-width="2.5" stroke-dasharray="4 6"/>
+<circle cx="63" cy="707" r="8" fill="#68A8FF" stroke="#D9F4FF" stroke-width="2"/>
+<circle cx="144" cy="707" r="8" fill="#4DD4A4" stroke="#D9F4FF" stroke-width="2"/>
+<circle cx="224" cy="707" r="8" fill="#C29BFF" stroke="#EADFFF" stroke-width="2"/>
+<circle cx="291" cy="684" r="8" fill="#152A3B" stroke="#F0BC6B" stroke-width="2"/>
+<circle cx="291" cy="734" r="8" fill="#152A3B" stroke="#A8B4C5" stroke-width="2"/>
+<text x="63" y="742" fill="#A9CEFB" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">EDIT</text>
+<text x="144" y="742" fill="#8AE5C4" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">RESTORE</text>
+<text x="224" y="742" fill="#D7BFFF" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle">DRAFT</text>
+<path d="M34 758H326" stroke="#29475A"/>
+<text x="34" y="784" fill="#8FABBA" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing=".8">MANIFEST SHA-256</text>
+<text x="34" y="817" fill="#D7F8ED" font-family="DejaVu Sans Mono, monospace" font-size="13">b1a27ecf59d02580577cacc04ffb7c78</text>
+<text x="34" y="842" fill="#D7F8ED" font-family="DejaVu Sans Mono, monospace" font-size="13">34a62dcf486f4127d95c893307cb6c7a</text>
+<text x="34" y="879" fill="#91ABB7" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">Solid: recorded · dashed: possible paths</text>
+<rect x="16" y="928" width="328" height="104" rx="17" fill="#152A3B" stroke="#2A4558"/>
+<rect x="16" y="928" width="5" height="104" rx="2" fill="#F0BC6B"/>
+<text x="39" y="955" fill="#F0BC6B" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing=".7">INFERENCE</text>
+<text x="39" y="987" fill="#F2F8FB" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700">Proposed control</text>
+<text x="39" y="1012" fill="#A8C2CE" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">Reviewable branch + required check</text>
+<rect x="16" y="1048" width="328" height="104" rx="17" fill="#152A3B" stroke="#2A4558"/>
+<rect x="16" y="1048" width="5" height="104" rx="2" fill="#A8B4C5"/>
+<text x="39" y="1075" fill="#A8B4C5" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing=".7">UNKNOWN</text>
+<text x="39" y="1107" fill="#F2F8FB" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700">Deployment not established</text>
+<text x="39" y="1132" fill="#A8C2CE" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">Review branch · main · release</text>
+<text x="20" y="1187" fill="#9FC6D6" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1">PROVENANCE CLASSES</text>
+<circle cx="26" cy="1214" r="6" fill="#68A8FF"/>
+<text x="39" y="1219" fill="#C8D9E2" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">SOURCE</text>
+<circle cx="177" cy="1214" r="6" fill="#4DD4A4"/>
+<text x="190" y="1219" fill="#C8D9E2" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">OBSERVED</text>
+<circle cx="26" cy="1245" r="6" fill="#C29BFF"/>
+<text x="39" y="1250" fill="#C8D9E2" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">DECISION</text>
+<circle cx="177" cy="1245" r="6" fill="#F0BC6B"/>
+<text x="190" y="1250" fill="#C8D9E2" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">INFERENCE</text>
+<circle cx="26" cy="1276" r="6" fill="#A8B4C5"/>
+<text x="39" y="1281" fill="#C8D9E2" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">UNKNOWN</text>
+<text x="20" y="1326" fill="#9FC6D6" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1">DEPLOYMENT STATE</text>
+<rect x="16" y="1343" width="160" height="84" rx="13" fill="#0C1D2C" stroke="#294255"/>
+<text x="29" y="1371" fill="#A7BFCA" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">LOCAL CASE STUDY</text>
+<text x="29" y="1404" fill="#4DD4A4" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700">GENERATED</text>
+<rect x="184" y="1343" width="160" height="84" rx="13" fill="#0C1D2C" stroke="#294255"/>
+<text x="197" y="1371" fill="#A7BFCA" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">REVIEW BRANCH</text>
+<text x="197" y="1404" fill="#A8B4C5" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700">UNVERIFIED</text>
+<rect x="16" y="1443" width="160" height="84" rx="13" fill="#0C1D2C" stroke="#294255"/>
+<text x="29" y="1471" fill="#A7BFCA" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">PROFILE MAIN</text>
+<text x="29" y="1504" fill="#A8B4C5" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700">UNVERIFIED</text>
+<rect x="184" y="1443" width="160" height="84" rx="13" fill="#0C1D2C" stroke="#294255"/>
+<text x="197" y="1471" fill="#A7BFCA" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700">RELEASE</text>
+<text x="197" y="1504" fill="#A8B4C5" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700">UNVERIFIED</text>
+<text x="20" y="1570" fill="#91ABB7" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">Snapshot 2026-09-29 · local case study</text>
+<text x="20" y="1592" fill="#91ABB7" font-family="DejaVu Sans, Arial, sans-serif" font-size="13">Public source pinned · private decision unlinked</text>
+</svg>

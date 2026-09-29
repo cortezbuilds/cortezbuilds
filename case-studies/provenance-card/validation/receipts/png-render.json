@@ -1,0 +1,115 @@
+{
+  "capture_boundary": "controlled_subprocess_stdio_and_declared_files",
+  "capture_complete": true,
+  "command": [
+    "python3",
+    "validation/render_previews.py"
+  ],
+  "cwd": ".",
+  "declared_outputs_present": true,
+  "duration_monotonic_ns": 2017918461,
+  "error": null,
+  "executable": {
+    "bytes": 30913848,
+    "sha256": "f7c6210eb40fadcd3c2889dddd24a15fc2c9f926aec5a03bf9da66e12d581526"
+  },
+  "executable_after": {
+    "bytes": 30913848,
+    "sha256": "f7c6210eb40fadcd3c2889dddd24a15fc2c9f926aec5a03bf9da66e12d581526"
+  },
+  "executable_stable": true,
+  "exit_code": 0,
+  "finished_at_utc": "2026-09-29T12:39:07.820659+00:00",
+  "finished_monotonic_ns": 63123934410144,
+  "input_stable": true,
+  "inputs_after": [
+    {
+      "bytes": 12072,
+      "exists": true,
+      "path": "card.svg",
+      "sha256": "61ac5135a51b2f1bfeafe3ae07511876730eb995934f22f4a6ae545e9740a435"
+    },
+    {
+      "bytes": 12193,
+      "exists": true,
+      "path": "card-mobile.svg",
+      "sha256": "f21c5eec6e5c658dea934cbf35bde47cc8c6ed4abc74efb385d3d7e4267bb073"
+    },
+    {
+      "bytes": 1540,
+      "exists": true,
+      "path": "validation/render_previews.py",
+      "sha256": "fb99baffcfd36d6752c228ddb5ad08f7c2785a18e82260023bbfe2516888a896"
+    }
+  ],
+  "inputs_before": [
+    {
+      "bytes": 12072,
+      "exists": true,
+      "path": "card.svg",
+      "sha256": "61ac5135a51b2f1bfeafe3ae07511876730eb995934f22f4a6ae545e9740a435"
+    },
+    {
+      "bytes": 12193,
+      "exists": true,
+      "path": "card-mobile.svg",
+      "sha256": "f21c5eec6e5c658dea934cbf35bde47cc8c6ed4abc74efb385d3d7e4267bb073"
+    },
+    {
+      "bytes": 1540,
+      "exists": true,
+      "path": "validation/render_previews.py",
+      "sha256": "fb99baffcfd36d6752c228ddb5ad08f7c2785a18e82260023bbfe2516888a896"
+    }
+  ],
+  "outputs_after": [
+    {
+      "bytes": 238988,
+      "exists": true,
+      "path": "card-1280.png",
+      "sha256": "f418e26532e4faeb7bb1be458acbb9cdcf60c72c43a486b7c706029c0fcf973f"
+    },
+    {
+      "bytes": 185352,
+      "exists": true,
+      "path": "card-360.png",
+      "sha256": "56bed81ff0c63b9231c8ccb1bd6c38663916607f486b9ee9f6ec1ff94cad34f0"
+    }
+  ],
+  "outputs_before": [
+    {
+      "exists": false,
+      "path": "card-1280.png"
+    },
+    {
+      "exists": false,
+      "path": "card-360.png"
+    }
+  ],
+  "root": ".",
+  "schema_version": "build-trace/1",
+  "scope": "Metadata only. Pre/post declared-file hashes and captured stdio digests; not model, host, or all-process I/O capture.",
+  "spec": {
+    "bytes": 255,
+    "path": "validation/png-render.spec.json",
+    "sha256": "43eef4c2f162d7af1443c0faefea3789e88f8ef9c16f3b7518817310e84330f5"
+  },
+  "started_at_utc": "2026-09-29T12:39:05.802728+00:00",
+  "started_monotonic_ns": 63121916491683,
+  "status": "completed",
+  "stderr": {
+    "bytes": 0,
+    "complete": true,
+    "error": null,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 0,
+    "complete": true,
+    "error": null,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "success": true,
+  "timed_out": false,
+  "timeout_seconds": 90
+}
