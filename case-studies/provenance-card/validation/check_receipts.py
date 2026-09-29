@@ -51,8 +51,13 @@ def check(name: str) -> None:
         raise ValueError(f"trace spec changed: {name}")
     if receipt["command"] != spec["command"] or receipt["timeout_seconds"] != spec["timeout_seconds"]:
         raise ValueError(f"trace command changed: {name}")
-    if any(receipt[key] is not True for key in ("capture_complete", "success", "input_stable", "executable_stable")):
+    if any(receipt[key] is not True for key in (
+        "capture_complete", "success", "input_stable", "executable_stable", "group_quiescent"
+    )):
         raise ValueError(f"trace incomplete or failed: {name}")
+    if (receipt["group_observation"] != "linux_procfs_waitid_wnowait" or
+            receipt["background_descendants_seen"] is not False):
+        raise ValueError(f"process group capture incomplete: {name}")
     if (receipt["status"] != "completed" or type(receipt["exit_code"]) is not int or
             receipt["exit_code"] != 0 or receipt["timed_out"] is not False or receipt["error"] is not None):
         raise ValueError(f"command did not complete successfully: {name}")

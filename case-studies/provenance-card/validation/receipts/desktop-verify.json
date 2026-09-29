@@ -1,4 +1,5 @@
 {
+  "background_descendants_seen": false,
   "capture_boundary": "controlled_subprocess_stdio_and_declared_files",
   "capture_complete": true,
   "command": [
@@ -8,7 +9,7 @@
   ],
   "cwd": ".",
   "declared_outputs_present": true,
-  "duration_monotonic_ns": 84035105,
+  "duration_monotonic_ns": 117565813,
   "error": null,
   "executable": {
     "bytes": 30913848,
@@ -20,15 +21,17 @@
   },
   "executable_stable": true,
   "exit_code": 0,
-  "finished_at_utc": "2026-09-29T13:00:00.900359+00:00",
-  "finished_monotonic_ns": 64377014108482,
+  "finished_at_utc": "2026-09-29T13:11:10.245731+00:00",
+  "finished_monotonic_ns": 65046359479748,
+  "group_observation": "linux_procfs_waitid_wnowait",
+  "group_quiescent": true,
   "input_stable": true,
   "inputs_after": [
     {
-      "bytes": 13078,
+      "bytes": 19132,
       "exists": true,
       "path": "validation/trace_build.py",
-      "sha256": "a20fb8fc7da8fefea874362d2ef6888d4d098c128949502b9ab8c4cbe5384b29"
+      "sha256": "05bf54023361c8a518f12d14b2c7b48ece7d9a79891d195a061c638600edbdb3"
     },
     {
       "bytes": 6301,
@@ -57,10 +60,10 @@
   ],
   "inputs_before": [
     {
-      "bytes": 13078,
+      "bytes": 19132,
       "exists": true,
       "path": "validation/trace_build.py",
-      "sha256": "a20fb8fc7da8fefea874362d2ef6888d4d098c128949502b9ab8c4cbe5384b29"
+      "sha256": "05bf54023361c8a518f12d14b2c7b48ece7d9a79891d195a061c638600edbdb3"
     },
     {
       "bytes": 6301,
@@ -91,14 +94,14 @@
   "outputs_before": [],
   "root": ".",
   "schema_version": "build-trace/1",
-  "scope": "Metadata only. Pre/post declared-file hashes and captured stdio digests; not model, host, or all-process I/O capture.",
+  "scope": "Linux same-process-group metadata only: declared-file hashes and captured stdio digests. New-session/group descendants, model context, host activity, and all-process I/O are outside this capture.",
   "spec": {
     "bytes": 255,
     "path": "validation/desktop-verify.spec.json",
     "sha256": "3e718d26b034e16fa37872bff92fdc9451c246d0f115f0a5fdd761c221355217"
   },
-  "started_at_utc": "2026-09-29T13:00:00.816310+00:00",
-  "started_monotonic_ns": 64376930073377,
+  "started_at_utc": "2026-09-29T13:11:10.128147+00:00",
+  "started_monotonic_ns": 65046241913935,
   "status": "completed",
   "stderr": {
     "bytes": 0,

@@ -82,6 +82,16 @@ class CheckReceiptsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "incomplete captured stdout"):
             self.check()
 
+    def test_group_quiescence_is_required(self) -> None:
+        self.mutate(lambda receipt: receipt.update(group_quiescent=False))
+        with self.assertRaisesRegex(ValueError, "trace incomplete or failed"):
+            self.check()
+
+    def test_background_descendant_is_rejected(self) -> None:
+        self.mutate(lambda receipt: receipt.update(background_descendants_seen=True))
+        with self.assertRaisesRegex(ValueError, "process group capture incomplete"):
+            self.check()
+
 
 if __name__ == "__main__":
     unittest.main()
