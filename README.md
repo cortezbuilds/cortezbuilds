@@ -4,14 +4,6 @@ I'm a developer in Berlin. I work across data systems, automation, and applied A
 
 I came to software through psychology, neuroscience, and medical research rather than a traditional computer-science path. That background still shapes how I think: systems are built for people, measurements have context, and elegant machinery is useless when it answers the wrong question.
 
-## How I build
-
-I work in end-to-end production slices: small enough to understand, complete enough to run for real and teach us something.
-
-Before I implement an interface, I ask: “Are we really sure LinkedIn didn’t scale and open-source this ten years ago?” The question is cheeky, but the instinct is sincere. I look for tools engineers have already built and shared, understand their tradeoffs, and build only where there’s a reason to.
-
-In 2026, I want Codex agents to read provenance-linked code diffs and propose reviewable updates to a central ruleset. Git history, or a feed from it, should make the evidence and decisions inspectable.
-
 ## Public identity
 
 [Cortez Builds identity record](identity/README.md) lists my current contact key and the status of future credentials. This GitHub page is a provisional discovery location for a signed record that can later be served from more than one place.
