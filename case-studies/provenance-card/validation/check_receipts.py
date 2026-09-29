@@ -26,6 +26,15 @@ CAPTURE_SCOPE = (
 )
 
 
+def reject_duplicate_receipt_keys(pairs: list[tuple[str, object]]) -> dict[str, object]:
+    receipt_object: dict[str, object] = {}
+    for key, value in pairs:
+        if key in receipt_object:
+            raise ValueError(f"duplicate receipt JSON key: {key}")
+        receipt_object[key] = value
+    return receipt_object
+
+
 def check_digest(item: object, label: str, keys: set[str]) -> None:
     if not isinstance(item, dict) or set(item) != keys:
         raise ValueError(f"invalid {label} fields")
@@ -81,7 +90,8 @@ def check_snapshot(items: list[dict], paths: list[str], label: str, *,
 def check(name: str) -> None:
     receipt_path = HERE / "receipts" / f"{name}.json"
     spec, spec_identity = read_spec(CARD, f"validation/{name}.spec.json")
-    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"),
+                         object_pairs_hook=reject_duplicate_receipt_keys)
     if receipt["schema_version"] != "build-trace/1" or receipt["root"] != "." or receipt["cwd"] != ".":
         raise ValueError(f"unexpected trace schema/root: {name}")
     if (receipt["capture_boundary"] != CAPTURE_BOUNDARY or

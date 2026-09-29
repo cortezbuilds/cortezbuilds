@@ -61,6 +61,16 @@ class CheckReceiptsTests(unittest.TestCase):
     def test_saved_receipt_matches_reviewed_files(self) -> None:
         self.check()
 
+    def test_duplicate_success_keys_are_rejected(self) -> None:
+        receipt = json.loads(self.receipt_path.read_text(encoding="utf-8"))
+        del receipt["success"]
+        encoded = json.dumps(receipt)
+        self.receipt_path.write_text(encoded[:-1] + ', "success": false, "success": true}',
+                                     encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "duplicate receipt JSON key: success"):
+            self.check()
+
     def test_rehashed_spec_with_invalid_schema_is_rejected(self) -> None:
         self.mutate_spec_and_rehash(lambda spec: spec.update(schema_version="build-trace-spec/999"))
         with self.assertRaisesRegex(ValueError, "invalid build trace spec schema"):
