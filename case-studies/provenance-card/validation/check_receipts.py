@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import json
+import re
 import sys
 
 from trace_build import sha256_file
@@ -14,6 +15,15 @@ CARD = Path(__file__).resolve().parents[1]
 HERE = Path(__file__).resolve().parent
 NAMES = ("desktop-build", "mobile-build", "desktop-verify", "mobile-verify", "tests", "png-render")
 BUILD_STEPS = {"desktop-build", "mobile-build", "png-render"}
+SHA256 = re.compile(r"^[0-9a-f]{64}$")
+
+
+def check_digest(item: object, label: str, keys: set[str]) -> None:
+    if not isinstance(item, dict) or set(item) != keys:
+        raise ValueError(f"invalid {label} fields")
+    if (not isinstance(item["sha256"], str) or not SHA256.fullmatch(item["sha256"]) or
+            type(item["bytes"]) is not int or item["bytes"] < 0):
+        raise ValueError(f"invalid {label} digest or byte count")
 
 
 def check_file(item: dict) -> None:
@@ -62,8 +72,12 @@ def check(name: str) -> None:
             receipt["exit_code"] != 0 or receipt["timed_out"] is not False or receipt["error"] is not None):
         raise ValueError(f"command did not complete successfully: {name}")
     for stream in ("stdout", "stderr"):
-        if receipt[stream]["complete"] is not True or receipt[stream]["error"] is not None:
+        state = receipt[stream]
+        check_digest(state, stream, {"sha256", "bytes", "complete", "error"})
+        if state["complete"] is not True or state["error"] is not None:
             raise ValueError(f"incomplete captured {stream}: {name}")
+    for label in ("executable", "executable_after"):
+        check_digest(receipt[label], label, {"sha256", "bytes"})
     if receipt["executable"] != receipt["executable_after"]:
         raise ValueError(f"executable changed during capture: {name}")
     check_snapshot(receipt["inputs_before"], spec["inputs"], "inputs_before", present=True,

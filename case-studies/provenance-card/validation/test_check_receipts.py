@@ -92,6 +92,25 @@ class CheckReceiptsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "process group capture incomplete"):
             self.check()
 
+    def test_malformed_stream_digest_is_rejected(self) -> None:
+        self.mutate(lambda receipt: receipt["stdout"].update(sha256="not-a-digest"))
+        with self.assertRaisesRegex(ValueError, "invalid stdout digest"):
+            self.check()
+
+    def test_negative_stream_byte_count_is_rejected(self) -> None:
+        self.mutate(lambda receipt: receipt["stderr"].update(bytes=-1))
+        with self.assertRaisesRegex(ValueError, "invalid stderr digest"):
+            self.check()
+
+    def test_matching_malformed_executable_digests_are_rejected(self) -> None:
+        def corrupt(receipt: dict) -> None:
+            for label in ("executable", "executable_after"):
+                receipt[label] = {"sha256": "not-a-digest", "bytes": -1}
+
+        self.mutate(corrupt)
+        with self.assertRaisesRegex(ValueError, "invalid executable digest"):
+            self.check()
+
 
 if __name__ == "__main__":
     unittest.main()
