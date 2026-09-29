@@ -9,7 +9,7 @@
   ],
   "cwd": ".",
   "declared_outputs_present": true,
-  "duration_monotonic_ns": 110928086,
+  "duration_monotonic_ns": 103759787,
   "error": null,
   "executable": {
     "bytes": 30913848,
@@ -21,17 +21,17 @@
   },
   "executable_stable": true,
   "exit_code": 0,
-  "finished_at_utc": "2026-09-29T13:49:33.749738+00:00",
-  "finished_monotonic_ns": 67349863487535,
+  "finished_at_utc": "2026-09-29T14:15:18.531458+00:00",
+  "finished_monotonic_ns": 68894645209107,
   "group_observation": "linux_procfs_waitid_wnowait",
   "group_quiescent": true,
   "input_stable": true,
   "inputs_after": [
     {
-      "bytes": 22724,
+      "bytes": 23276,
       "exists": true,
       "path": "validation/trace_build.py",
-      "sha256": "18c18dce9de11629243aa160d3e6d13bfa332090830e2416cf0b12e41a7837b0"
+      "sha256": "1e6706599da42efdecc5e435671c2145125d49dc2f8c4e1748823c1e4d8db8df"
     },
     {
       "bytes": 6301,
@@ -60,10 +60,10 @@
   ],
   "inputs_before": [
     {
-      "bytes": 22724,
+      "bytes": 23276,
       "exists": true,
       "path": "validation/trace_build.py",
-      "sha256": "18c18dce9de11629243aa160d3e6d13bfa332090830e2416cf0b12e41a7837b0"
+      "sha256": "1e6706599da42efdecc5e435671c2145125d49dc2f8c4e1748823c1e4d8db8df"
     },
     {
       "bytes": 6301,
@@ -100,8 +100,8 @@
     "path": "validation/desktop-verify.spec.json",
     "sha256": "3e718d26b034e16fa37872bff92fdc9451c246d0f115f0a5fdd761c221355217"
   },
-  "started_at_utc": "2026-09-29T13:49:33.638794+00:00",
-  "started_monotonic_ns": 67349752559449,
+  "started_at_utc": "2026-09-29T14:15:18.427685+00:00",
+  "started_monotonic_ns": 68894541449320,
   "status": "completed",
   "stderr": {
     "bytes": 0,
