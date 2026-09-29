@@ -4,6 +4,8 @@ I'm a developer in Berlin. I work across data systems, automation, and applied A
 
 I came to software through psychology, neuroscience, and medical research rather than a traditional computer-science path. That background still shapes how I think: systems are built for people, measurements have context, and elegant machinery is useless when it answers the wrong question.
 
+My [developer beliefs working draft](developer-beliefs.md) explains why I want to change the idea of a mainstream developer. The [provenance card case study](case-studies/provenance-card/README.md) shows one real edit, its recovery, and the limits of the evidence behind it.
+
 ## Public identity
 
 [Cortez Builds identity record](identity/README.md) lists my current contact key and the status of future credentials. This GitHub page is a provisional discovery location for a signed record that can later be served from more than one place.

@@ -1,0 +1,130 @@
+{
+  "background_descendants_seen": false,
+  "capture_boundary": "controlled_subprocess_stdio_and_declared_files",
+  "capture_complete": true,
+  "command": [
+    "python3",
+    "validation/render_previews.py"
+  ],
+  "cwd": ".",
+  "declared_outputs_present": true,
+  "duration_monotonic_ns": 1974283686,
+  "error": null,
+  "executable": {
+    "bytes": 30913848,
+    "sha256": "f7c6210eb40fadcd3c2889dddd24a15fc2c9f926aec5a03bf9da66e12d581526"
+  },
+  "executable_after": {
+    "bytes": 30913848,
+    "sha256": "f7c6210eb40fadcd3c2889dddd24a15fc2c9f926aec5a03bf9da66e12d581526"
+  },
+  "executable_stable": true,
+  "exit_code": 0,
+  "finished_at_utc": "2026-09-29T14:25:54.867646+00:00",
+  "finished_monotonic_ns": 69530981395515,
+  "group_observation": "linux_procfs_waitid_wnowait",
+  "group_quiescent": true,
+  "input_stable": true,
+  "inputs_after": [
+    {
+      "bytes": 23760,
+      "exists": true,
+      "path": "validation/trace_build.py",
+      "sha256": "3293908b45ab5f77bc9546404f985dae73534e9300bf0a7c25b9f907018b558f"
+    },
+    {
+      "bytes": 12072,
+      "exists": true,
+      "path": "card.svg",
+      "sha256": "61ac5135a51b2f1bfeafe3ae07511876730eb995934f22f4a6ae545e9740a435"
+    },
+    {
+      "bytes": 12193,
+      "exists": true,
+      "path": "card-mobile.svg",
+      "sha256": "f21c5eec6e5c658dea934cbf35bde47cc8c6ed4abc74efb385d3d7e4267bb073"
+    },
+    {
+      "bytes": 1540,
+      "exists": true,
+      "path": "validation/render_previews.py",
+      "sha256": "fb99baffcfd36d6752c228ddb5ad08f7c2785a18e82260023bbfe2516888a896"
+    }
+  ],
+  "inputs_before": [
+    {
+      "bytes": 23760,
+      "exists": true,
+      "path": "validation/trace_build.py",
+      "sha256": "3293908b45ab5f77bc9546404f985dae73534e9300bf0a7c25b9f907018b558f"
+    },
+    {
+      "bytes": 12072,
+      "exists": true,
+      "path": "card.svg",
+      "sha256": "61ac5135a51b2f1bfeafe3ae07511876730eb995934f22f4a6ae545e9740a435"
+    },
+    {
+      "bytes": 12193,
+      "exists": true,
+      "path": "card-mobile.svg",
+      "sha256": "f21c5eec6e5c658dea934cbf35bde47cc8c6ed4abc74efb385d3d7e4267bb073"
+    },
+    {
+      "bytes": 1540,
+      "exists": true,
+      "path": "validation/render_previews.py",
+      "sha256": "fb99baffcfd36d6752c228ddb5ad08f7c2785a18e82260023bbfe2516888a896"
+    }
+  ],
+  "outputs_after": [
+    {
+      "bytes": 238988,
+      "exists": true,
+      "path": "card-1280.png",
+      "sha256": "f418e26532e4faeb7bb1be458acbb9cdcf60c72c43a486b7c706029c0fcf973f"
+    },
+    {
+      "bytes": 185352,
+      "exists": true,
+      "path": "card-360.png",
+      "sha256": "56bed81ff0c63b9231c8ccb1bd6c38663916607f486b9ee9f6ec1ff94cad34f0"
+    }
+  ],
+  "outputs_before": [
+    {
+      "exists": false,
+      "path": "card-1280.png"
+    },
+    {
+      "exists": false,
+      "path": "card-360.png"
+    }
+  ],
+  "root": ".",
+  "schema_version": "build-trace/1",
+  "scope": "Linux same-process-group metadata only: declared-file hashes and captured stdio digests. New-session/group descendants, model context, host activity, and all-process I/O are outside this capture.",
+  "spec": {
+    "bytes": 284,
+    "path": "validation/png-render.spec.json",
+    "sha256": "0e5397cb4abd8c3b1f0e34e13d5cd566cd91118388b4985ba01fb117fe340477"
+  },
+  "started_at_utc": "2026-09-29T14:25:52.893349+00:00",
+  "started_monotonic_ns": 69529007111829,
+  "status": "completed",
+  "stderr": {
+    "bytes": 0,
+    "complete": true,
+    "error": null,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 0,
+    "complete": true,
+    "error": null,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "success": true,
+  "timed_out": false,
+  "timeout_seconds": 90
+}

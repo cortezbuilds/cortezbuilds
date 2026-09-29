@@ -1,0 +1,8 @@
+{
+  "schema_version": "provenance-card-receipt/1",
+  "canonicalization": "UTF-8 JSON; ASCII keys sorted; compact separators; NFC strings; no floats; prefixed with provenance-card/1 NUL",
+  "manifest_sha256": "b1a27ecf59d02580577cacc04ffb7c7834a62dcf486f4127d95c893307cb6c7a",
+  "card_svg_sha256": "61ac5135a51b2f1bfeafe3ae07511876730eb995934f22f4a6ae545e9740a435",
+  "signature": null,
+  "scope": "File consistency only; this unsigned receipt does not prove authorship, complete event capture, skill execution, publication, or release."
+}

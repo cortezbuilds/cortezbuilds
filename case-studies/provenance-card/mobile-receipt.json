@@ -1,0 +1,9 @@
+{
+  "schema_version": "provenance-card-mobile-receipt/1",
+  "variant": "mobile-360",
+  "manifest_sha256": "b1a27ecf59d02580577cacc04ffb7c7834a62dcf486f4127d95c893307cb6c7a",
+  "desktop_card_svg_sha256": "61ac5135a51b2f1bfeafe3ae07511876730eb995934f22f4a6ae545e9740a435",
+  "mobile_card_svg_sha256": "f21c5eec6e5c658dea934cbf35bde47cc8c6ed4abc74efb385d3d7e4267bb073",
+  "signature": null,
+  "scope": "Derived view of the dated snapshot. Unsigned hashes show file consistency, not authorship, skill execution, publication, or release."
+}

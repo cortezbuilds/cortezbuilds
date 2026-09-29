@@ -1,0 +1,149 @@
+{
+  "schema_version": "provenance-card/1",
+  "title": "A reversible mistake",
+  "subject": "Cortez Builds profile README incident and a proposed beliefs draft",
+  "snapshot_utc": "2026-09-29T08:49:53Z",
+  "scope": "A portable case study prepared for review. Stage states describe the 2026-09-29 snapshot, not the current branch or deployment state.",
+  "evidence": [
+    {
+      "id": "E1",
+      "class": "source",
+      "label": "Public addition, exact README lines",
+      "authority": "GitHub commit-pinned source",
+      "url": "https://github.com/cortezbuilds/cortezbuilds/blob/654c51648f43bfa861c1f9bdc1fa3dbee2ec4c4d/README.md?plain=1#L7-L14",
+      "commit": "654c51648f43bfa861c1f9bdc1fa3dbee2ec4c4d",
+      "verified_via": "Public GitHub commits and contents API readback",
+      "verified_at_utc": "2026-09-29T08:45:51Z"
+    },
+    {
+      "id": "E2",
+      "class": "source",
+      "label": "Public revert commit",
+      "authority": "GitHub commit",
+      "url": "https://github.com/cortezbuilds/cortezbuilds/commit/1f0c3e17d3e99a47241ebc00abdbe4e8071c7a5b",
+      "commit": "1f0c3e17d3e99a47241ebc00abdbe4e8071c7a5b",
+      "parent": "654c51648f43bfa861c1f9bdc1fa3dbee2ec4c4d",
+      "pre_edit_commit": "d1701ea368dd64efc890d5993603eaabcf59406f",
+      "pre_edit_commit_api_url": "https://api.github.com/repos/cortezbuilds/cortezbuilds/git/commits/d1701ea368dd64efc890d5993603eaabcf59406f",
+      "revert_commit_api_url": "https://api.github.com/repos/cortezbuilds/cortezbuilds/git/commits/1f0c3e17d3e99a47241ebc00abdbe4e8071c7a5b",
+      "restored_tree_sha": "fffc0c5ab71f1cbc003ec24859b9ac160ce3cbd8",
+      "pre_edit_tree_sha": "fffc0c5ab71f1cbc003ec24859b9ac160ce3cbd8",
+      "verified_via": "Public GitHub commits API readback",
+      "verified_at_utc": "2026-09-29T08:45:51Z"
+    },
+    {
+      "id": "E3",
+      "class": "observed",
+      "label": "Main branch and README readback",
+      "authority": "Public GitHub branches and contents API response at the snapshot time",
+      "url": "https://api.github.com/repos/cortezbuilds/cortezbuilds/branches/main",
+      "head_commit": "1f0c3e17d3e99a47241ebc00abdbe4e8071c7a5b",
+      "readme_blob_sha": "aa4f5d3bf8cc8339a0fb9877c27fd3e0d43ae5a6",
+      "readme_sha256": "446e69311b8af5dc29c5b760627958b19e79d897c31e4e4f10741bae431adabf",
+      "contains_how_i_build": false,
+      "verified_at_utc": "2026-09-29T08:45:51Z"
+    },
+    {
+      "id": "E4",
+      "class": "decision",
+      "label": "Instruction to keep work in review",
+      "authority": "Private conversation; no independently inspectable public record",
+      "url": null,
+      "public_permalink": false,
+      "private_transcript_published": false,
+      "note": "The user requested a reviewable branch for the next beliefs draft. This is a paraphrase of private context, not a public transcript or a verified execution event."
+    },
+    {
+      "id": "E5",
+      "class": "inference",
+      "label": "Review gate design rationale",
+      "authority": "Design proposal informed by GitHub documentation",
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches",
+      "note": "The documentation describes review and status-check controls; it does not establish that they are configured on this repository."
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "class": "source",
+      "card_title": "README edit landed on main",
+      "card_detail": "654c516 · README lines 7–14",
+      "statement": "Commit 654c516 added the How I build section to the profile README, and the subsequent main-branch history contains that commit. Public Git history does not by itself establish the write mechanism.",
+      "evidence_ids": [
+        "E1",
+        "E2",
+        "E3"
+      ]
+    },
+    {
+      "id": "C2",
+      "class": "observed",
+      "card_title": "Restored on main",
+      "card_detail": "1f0c3e17 · observed at snapshot",
+      "statement": "The revert commit removed that section; the public main branch pointed to it and the README did not contain the section at the snapshot time.",
+      "evidence_ids": [
+        "E2",
+        "E3"
+      ]
+    },
+    {
+      "id": "C3",
+      "class": "decision",
+      "card_title": "Draft prepared for review",
+      "card_detail": "Beliefs wording · decision private",
+      "statement": "The next developer-beliefs statement was prepared as a draft for review. The underlying user decision is private and has no public permalink. Publication on a review branch must be verified separately.",
+      "evidence_ids": [
+        "E4"
+      ]
+    },
+    {
+      "id": "C4",
+      "class": "inference",
+      "card_title": "Proposed control",
+      "card_detail": "Reviewable branch + required check",
+      "statement": "A reviewable branch and required check are appropriate controls for a future rules workflow. This is a proposal, not a configured control.",
+      "evidence_ids": [
+        "E5"
+      ]
+    },
+    {
+      "id": "C5",
+      "class": "unknown",
+      "card_title": "Deployment not established",
+      "card_detail": "Review branch · main · release",
+      "statement": "At this snapshot there was no evidence of this case study on a review branch, on main, or in a release. Later events require their own evidence records.",
+      "evidence_ids": []
+    }
+  ],
+  "stage_states": [
+    {
+      "stage": "local case study",
+      "state": "generated",
+      "evidence": "This directory's locally verified files"
+    },
+    {
+      "stage": "review branch",
+      "state": "unverified",
+      "evidence": null
+    },
+    {
+      "stage": "profile repo main",
+      "state": "unverified",
+      "evidence": null
+    },
+    {
+      "stage": "release",
+      "state": "unverified",
+      "evidence": null
+    }
+  ],
+  "media_inputs": {
+    "actual_text": [
+      "Public README source",
+      "Private decision context (paraphrased; transcript unpublished)"
+    ],
+    "actual_image": [],
+    "actual_audio": [],
+    "future_optional_method": "Hash original bytes of each text, image, or audio input separately. Record any transcript, perceptual hash, or embedding as a distinct derived artifact with its algorithm and version. Similarity can suggest a match but cannot prove execution."
+  }
+}

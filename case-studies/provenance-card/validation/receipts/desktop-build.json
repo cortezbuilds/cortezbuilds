@@ -1,0 +1,119 @@
+{
+  "background_descendants_seen": false,
+  "capture_boundary": "controlled_subprocess_stdio_and_declared_files",
+  "capture_complete": true,
+  "command": [
+    "python3",
+    "provenance_card.py",
+    "build"
+  ],
+  "cwd": ".",
+  "declared_outputs_present": true,
+  "duration_monotonic_ns": 105631891,
+  "error": null,
+  "executable": {
+    "bytes": 30913848,
+    "sha256": "f7c6210eb40fadcd3c2889dddd24a15fc2c9f926aec5a03bf9da66e12d581526"
+  },
+  "executable_after": {
+    "bytes": 30913848,
+    "sha256": "f7c6210eb40fadcd3c2889dddd24a15fc2c9f926aec5a03bf9da66e12d581526"
+  },
+  "executable_stable": true,
+  "exit_code": 0,
+  "finished_at_utc": "2026-09-29T14:25:52.193156+00:00",
+  "finished_monotonic_ns": 69528306905528,
+  "group_observation": "linux_procfs_waitid_wnowait",
+  "group_quiescent": true,
+  "input_stable": true,
+  "inputs_after": [
+    {
+      "bytes": 23760,
+      "exists": true,
+      "path": "validation/trace_build.py",
+      "sha256": "3293908b45ab5f77bc9546404f985dae73534e9300bf0a7c25b9f907018b558f"
+    },
+    {
+      "bytes": 6301,
+      "exists": true,
+      "path": "manifest.json",
+      "sha256": "343390da7b0755a747a86fb246b97d6db20406768838fdb13c446e3659ac3a3d"
+    },
+    {
+      "bytes": 15718,
+      "exists": true,
+      "path": "provenance_card.py",
+      "sha256": "e03a52d4b106cb8d359ed52018f733b09fde72ffb784d0f3fe48b8307d79877c"
+    }
+  ],
+  "inputs_before": [
+    {
+      "bytes": 23760,
+      "exists": true,
+      "path": "validation/trace_build.py",
+      "sha256": "3293908b45ab5f77bc9546404f985dae73534e9300bf0a7c25b9f907018b558f"
+    },
+    {
+      "bytes": 6301,
+      "exists": true,
+      "path": "manifest.json",
+      "sha256": "343390da7b0755a747a86fb246b97d6db20406768838fdb13c446e3659ac3a3d"
+    },
+    {
+      "bytes": 15718,
+      "exists": true,
+      "path": "provenance_card.py",
+      "sha256": "e03a52d4b106cb8d359ed52018f733b09fde72ffb784d0f3fe48b8307d79877c"
+    }
+  ],
+  "outputs_after": [
+    {
+      "bytes": 12072,
+      "exists": true,
+      "path": "card.svg",
+      "sha256": "61ac5135a51b2f1bfeafe3ae07511876730eb995934f22f4a6ae545e9740a435"
+    },
+    {
+      "bytes": 539,
+      "exists": true,
+      "path": "receipt.json",
+      "sha256": "06d51a4af221d415357393e62187bcf464b33c5a15a79d6e578e1fa6dd0a80fc"
+    }
+  ],
+  "outputs_before": [
+    {
+      "exists": false,
+      "path": "card.svg"
+    },
+    {
+      "exists": false,
+      "path": "receipt.json"
+    }
+  ],
+  "root": ".",
+  "schema_version": "build-trace/1",
+  "scope": "Linux same-process-group metadata only: declared-file hashes and captured stdio digests. New-session/group descendants, model context, host activity, and all-process I/O are outside this capture.",
+  "spec": {
+    "bytes": 252,
+    "path": "validation/desktop-build.spec.json",
+    "sha256": "c675f3a9a34600b6de7180f84b1d4bc117041a275f6c08c3b47fbcf9a906ad8d"
+  },
+  "started_at_utc": "2026-09-29T14:25:52.087509+00:00",
+  "started_monotonic_ns": 69528201273637,
+  "status": "completed",
+  "stderr": {
+    "bytes": 0,
+    "complete": true,
+    "error": null,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 115,
+    "complete": true,
+    "error": null,
+    "sha256": "29174d9c1841d83cb1170534b99e5e8044bfad88d1a604186bbbe183def4d7dd"
+  },
+  "success": true,
+  "timed_out": false,
+  "timeout_seconds": 30
+}

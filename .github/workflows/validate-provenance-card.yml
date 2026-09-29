@@ -1,0 +1,30 @@
+name: Validate provenance card
+
+on:
+  pull_request:
+    paths:
+      - "case-studies/provenance-card/**"
+      - ".github/workflows/validate-provenance-card.yml"
+  push:
+    branches: [main]
+    paths:
+      - "case-studies/provenance-card/**"
+      - ".github/workflows/validate-provenance-card.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  card-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify saved card, traces, and tests
+        working-directory: case-studies/provenance-card
+        run: |
+          python3 provenance_card.py verify
+          python3 mobile_card.py verify
+          python3 -m unittest discover -s tests -v
+          python3 -m unittest discover -s validation -p test_trace_build.py -v
+          python3 -m unittest discover -s validation -p test_check_receipts.py -v
+          python3 validation/check_receipts.py
