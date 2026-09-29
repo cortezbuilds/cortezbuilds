@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from datetime import datetime, timedelta
 from pathlib import Path
 import json
 import re
@@ -16,6 +17,7 @@ HERE = Path(__file__).resolve().parent
 NAMES = ("desktop-build", "mobile-build", "desktop-verify", "mobile-verify", "tests", "png-render")
 BUILD_STEPS = {"desktop-build", "mobile-build", "png-render"}
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
+UTC_TIMESTAMP = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|\+00:00)$")
 
 
 def check_digest(item: object, label: str, keys: set[str]) -> None:
@@ -24,6 +26,26 @@ def check_digest(item: object, label: str, keys: set[str]) -> None:
     if (not isinstance(item["sha256"], str) or not SHA256.fullmatch(item["sha256"]) or
             type(item["bytes"]) is not int or item["bytes"] < 0):
         raise ValueError(f"invalid {label} digest or byte count")
+
+
+def check_timing(receipt: dict) -> None:
+    for label in ("started_at_utc", "finished_at_utc"):
+        value = receipt[label]
+        if not isinstance(value, str) or not UTC_TIMESTAMP.fullmatch(value):
+            raise ValueError(f"invalid UTC timestamp: {label}")
+        try:
+            parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError as error:
+            raise ValueError(f"invalid UTC timestamp: {label}") from error
+        if parsed.utcoffset() != timedelta(0):
+            raise ValueError(f"invalid UTC timestamp: {label}")
+    fields = ("started_monotonic_ns", "finished_monotonic_ns", "duration_monotonic_ns")
+    if any(type(receipt[label]) is not int or receipt[label] < 0 for label in fields):
+        raise ValueError("invalid monotonic timing")
+    if (receipt["finished_monotonic_ns"] < receipt["started_monotonic_ns"] or
+            receipt["duration_monotonic_ns"] !=
+            receipt["finished_monotonic_ns"] - receipt["started_monotonic_ns"]):
+        raise ValueError("invalid monotonic timing")
 
 
 def check_file(item: dict) -> None:
@@ -61,6 +83,7 @@ def check(name: str) -> None:
         raise ValueError(f"trace spec changed: {name}")
     if receipt["command"] != spec["command"] or receipt["timeout_seconds"] != spec["timeout_seconds"]:
         raise ValueError(f"trace command changed: {name}")
+    check_timing(receipt)
     if any(receipt[key] is not True for key in (
         "capture_complete", "success", "input_stable", "executable_stable", "group_quiescent"
     )):

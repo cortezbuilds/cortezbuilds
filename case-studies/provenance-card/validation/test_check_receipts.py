@@ -111,6 +111,29 @@ class CheckReceiptsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "invalid executable digest"):
             self.check()
 
+    def test_invalid_utc_timestamps_are_rejected(self) -> None:
+        self.mutate(lambda receipt: receipt.update(started_at_utc="not-a-time",
+                                                   finished_at_utc="2026-09-29"))
+        with self.assertRaisesRegex(ValueError, "invalid UTC timestamp"):
+            self.check()
+
+    def test_non_utc_timestamp_is_rejected(self) -> None:
+        self.mutate(lambda receipt: receipt.update(started_at_utc="2026-09-29T13:20:00+01:00"))
+        with self.assertRaisesRegex(ValueError, "invalid UTC timestamp"):
+            self.check()
+
+    def test_negative_or_reversed_monotonic_timing_is_rejected(self) -> None:
+        self.mutate(lambda receipt: receipt.update(started_monotonic_ns=100,
+                                                   finished_monotonic_ns=1,
+                                                   duration_monotonic_ns=-99))
+        with self.assertRaisesRegex(ValueError, "invalid monotonic timing"):
+            self.check()
+
+    def test_inconsistent_monotonic_duration_is_rejected(self) -> None:
+        self.mutate(lambda receipt: receipt.update(duration_monotonic_ns=0))
+        with self.assertRaisesRegex(ValueError, "invalid monotonic timing"):
+            self.check()
+
 
 if __name__ == "__main__":
     unittest.main()

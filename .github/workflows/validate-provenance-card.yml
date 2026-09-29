@@ -5,6 +5,11 @@ on:
     paths:
       - "case-studies/provenance-card/**"
       - ".github/workflows/validate-provenance-card.yml"
+  push:
+    branches: [main]
+    paths:
+      - "case-studies/provenance-card/**"
+      - ".github/workflows/validate-provenance-card.yml"
 
 permissions:
   contents: read
