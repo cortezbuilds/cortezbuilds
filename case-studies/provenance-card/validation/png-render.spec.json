@@ -1,7 +1,7 @@
 {
   "schema_version": "build-trace-spec/1",
   "command": ["python3", "validation/render_previews.py"],
-  "inputs": ["card.svg", "card-mobile.svg", "validation/render_previews.py"],
+  "inputs": ["validation/trace_build.py", "card.svg", "card-mobile.svg", "validation/render_previews.py"],
   "outputs": ["card-1280.png", "card-360.png"],
   "timeout_seconds": 90
 }

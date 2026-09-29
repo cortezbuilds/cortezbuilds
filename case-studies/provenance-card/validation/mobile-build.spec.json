@@ -1,7 +1,7 @@
 {
   "schema_version": "build-trace-spec/1",
   "command": ["python3", "mobile_card.py", "build"],
-  "inputs": ["manifest.json", "provenance_card.py", "mobile_card.py", "card.svg", "receipt.json"],
+  "inputs": ["validation/trace_build.py", "manifest.json", "provenance_card.py", "mobile_card.py", "card.svg", "receipt.json"],
   "outputs": ["card-mobile.svg", "mobile-receipt.json"],
   "timeout_seconds": 30
 }

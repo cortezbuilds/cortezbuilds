@@ -12,7 +12,7 @@
   ],
   "cwd": ".",
   "declared_outputs_present": true,
-  "duration_monotonic_ns": 217367501,
+  "duration_monotonic_ns": 216000246,
   "error": null,
   "executable": {
     "bytes": 30913848,
@@ -24,10 +24,16 @@
   },
   "executable_stable": true,
   "exit_code": 0,
-  "finished_at_utc": "2026-09-29T12:38:35.702005+00:00",
-  "finished_monotonic_ns": 63091815754404,
+  "finished_at_utc": "2026-09-29T13:00:02.071156+00:00",
+  "finished_monotonic_ns": 64378184906689,
   "input_stable": true,
   "inputs_after": [
+    {
+      "bytes": 13078,
+      "exists": true,
+      "path": "validation/trace_build.py",
+      "sha256": "a20fb8fc7da8fefea874362d2ef6888d4d098c128949502b9ab8c4cbe5384b29"
+    },
     {
       "bytes": 6301,
       "exists": true,
@@ -78,6 +84,12 @@
     }
   ],
   "inputs_before": [
+    {
+      "bytes": 13078,
+      "exists": true,
+      "path": "validation/trace_build.py",
+      "sha256": "a20fb8fc7da8fefea874362d2ef6888d4d098c128949502b9ab8c4cbe5384b29"
+    },
     {
       "bytes": 6301,
       "exists": true,
@@ -133,18 +145,18 @@
   "schema_version": "build-trace/1",
   "scope": "Metadata only. Pre/post declared-file hashes and captured stdio digests; not model, host, or all-process I/O capture.",
   "spec": {
-    "bytes": 327,
+    "bytes": 356,
     "path": "validation/tests.spec.json",
-    "sha256": "8941622dabb3258773f420c9de3bee7fef7ad34b766fc4412c97b53da91425a7"
+    "sha256": "bdb7d9e49425cd1111e8d8636e74e4a5649288734b5aa07f88238cb660f2f8a6"
   },
-  "started_at_utc": "2026-09-29T12:38:35.484621+00:00",
-  "started_monotonic_ns": 63091598386903,
+  "started_at_utc": "2026-09-29T13:00:01.855141+00:00",
+  "started_monotonic_ns": 64377968906443,
   "status": "completed",
   "stderr": {
     "bytes": 753,
     "complete": true,
     "error": null,
-    "sha256": "5da6861501170ff92f4dca22f78140316cdf354e71c9a119adaea69d7af4b707"
+    "sha256": "082b121992300be735c0fafd1424915779ee1599883308aca1c373908ba4f7e6"
   },
   "stdout": {
     "bytes": 0,
